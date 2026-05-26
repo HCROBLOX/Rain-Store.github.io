@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rain Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#1b1208;
+color:white;
+overflow-x:hidden;
+}
+
+nav{
+padding:20px;
+background:#3d210e;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+color:#ffbf66;
+}
+
+nav button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#ff9900;
+color:white;
+font-weight:700;
+}
+
+.hero{
+padding:80px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:55px;
+color:#ffbf66;
+}
+
+.hero p{
+margin-top:15px;
+opacity:0.8;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:30px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.card{
+background:#2d190d;
+padding:25px;
+border-radius:20px;
+border:2px solid #5a3318;
+}
+
+.card h2{
+margin-bottom:10px;
+color:#ffbf66;
+}
+
+.price{
+font-size:28px;
+font-weight:700;
+margin-top:10px;
+}
+
+.buy{
+margin-top:20px;
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#ff9900;
+color:white;
+font-size:18px;
+font-weight:700;
+}
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.7);
+display:none;
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:9999;
+}
+
+.modal-box{
+background:#2d190d;
+padding:30px;
+border-radius:20px;
+width:100%;
+max-width:400px;
+}
+
+.modal-box h2{
+margin-bottom:20px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+background:#432513;
+color:white;
+}
+
+.submit{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#ff9900;
+color:white;
+font-size:18px;
+font-weight:700;
+}
+
+.close{
+margin-top:10px;
+background:red;
+}
+
+.order{
+background:#432513;
+padding:15px;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+.status{
+margin-top:10px;
+font-weight:700;
+color:#ffbf66;
+}
+
+.rule{
+background:#3d210e;
+padding:20px;
+border-radius:20px;
+margin-top:40px;
+line-height:1.8;
+}
+
+footer{
+margin-top:50px;
+padding:30px;
+text-align:center;
+background:#3d210e;
+}
+
+.hidden{
+display:none;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo">RAIN STORE</div>
+<div>
+<button onclick="openLogin()">Login</button>
+<button onclick="openRegister()">Register</button>
+</div>
+</nav>
+
+<section class="hero">
+<h1>CÀY THUÊ BLOX FRUITS</h1>
+<p>Uy tín • Nhanh • Giá rẻ 😎</p>
+</section>
+
+<div class="container">
+
+<div class="grid">
+
+<div class="card">
+<h2>1 → Max Level</h2>
+<div class="price">30K</div>
+<button class="buy" onclick="createOrder('1 → Max Level')">Thuê Ngay</button>
+</div>
+
+<div class="card">
+<h2>V4 Full Gear</h2>
+<div class="price">30K</div>
+<button class="buy" onclick="createOrder('V4 Full Gear')">Thuê Ngay</button>
+</div>
+
+<div class="card">
+<h2>Soul Guitar</h2>
+<div class="price">10K</div>
+<button class="buy" onclick="createOrder('Soul Guitar')">Thuê Ngay</button>
+</div>
+
+<div class="card">
+<h2>CDK</h2>
+<div class="price">20K</div>
+<button class="buy" onclick="createOrder('CDK')">Thuê Ngay</button>
+</div>
+
+</div>
+
+<div class="rule">
+<h2>LUẬT SHOP</h2>
+<br>
+<p>• Không đăng nhập tài khoản quá 3 lần khi đang cày.</p>
+<p>• Nếu vi phạm sẽ ngừng cày và không hoàn tiền.</p>
+<p>• Không đổi mật khẩu khi đang thuê.</p>
+<p>• Shop không chịu trách nhiệm nếu khách tự đăng nhập phá tiến độ.</p>
+</div>
+
+<h2 style="margin-top:50px">NẠP TIỀN</h2>
+
+<div class="grid" style="margin-top:20px">
+
+<div class="card">
+<h2>Thẻ Cào</h2>
+<p>Viettel / Mobifone / Vinaphone</p>
+</div>
+
+<div class="card">
+<h2>Ngân Hàng</h2>
+<p>MB Bank / Momo / Vietcombank</p>
+</div>
+
+</div>
+
+<div id="adminPanel" class="hidden" style="margin-top:50px">
+<h2>ADMIN PANEL</h2>
+<br>
+<div id="orders"></div>
+</div>
+
+</div>
+
+<footer>
+Rain Store © 2026
+</footer>
+
+<!-- LOGIN -->
+
+<div class="modal" id="loginModal">
+<div class="modal-box">
+<h2>Login</h2>
+<input type="text" id="loginUser" placeholder="Username">
+<input type="password" id="loginPass" placeholder="Password">
+<button class="submit" onclick="login()">Login</button>
+<button class="submit close" onclick="closeModal()">Close</button>
+</div>
+</div>
+
+<!-- REGISTER -->
+
+<div class="modal" id="registerModal">
+<div class="modal-box">
+<h2>Register</h2>
+<input type="text" id="regUser" placeholder="Username">
+<input type="password" id="regPass" placeholder="Password">
+<button class="submit" onclick="register()">Register</button>
+<button class="submit close" onclick="closeModal()">Close</button>
+</div>
+</div>
+
+<script>
+
+let currentUser=null;
+
+if(!localStorage.getItem('users')){
+localStorage.setItem('users',JSON.stringify([
+{
+username:'admin',
+password:'admin123',
+role:'admin'
+}
+]));
+}
+
+if(!localStorage.getItem('orders')){
+localStorage.setItem('orders',JSON.stringify([]));
+}
+
+function openLogin(){
+document.getElementById('loginModal').style.display='flex';
+}
+
+function openRegister(){
+document.getElementById('registerModal').style.display='flex';
+}
+
+function closeModal(){
+document.getElementById('loginModal').style.display='none';
+document.getElementById('registerModal').style.display='none';
+}
+
+function register(){
+
+let user=document.getElementById('regUser').value;
+let pass=document.getElementById('regPass').value;
+
+if(!user||!pass){
+alert('Nhập đầy đủ thông tin');
+return;
+}
+
+let users=JSON.parse(localStorage.getItem('users'));
+
+if(users.find(u=>u.username===user)){
+alert('Username đã tồn tại');
+return;
+}
+
+users.push({
+username:user,
+password:pass,
+role:'user'
+});
+
+localStorage.setItem('users',JSON.stringify(users));
+
+alert('Đăng ký thành công');
+closeModal();
+}
+
+function login(){
+
+let user=document.getElementById('loginUser').value;
+let pass=document.getElementById('loginPass').value;
+
+let users=JSON.parse(localStorage.getItem('users'));
+
+let found=users.find(u=>u.username===user&&u.password===pass);
+
+if(!found){
+alert('Sai tài khoản');
+return;
+}
+
+currentUser=found;
+
+alert('Đăng nhập thành công');
+closeModal();
+
+if(found.role==='admin'){
+document.getElementById('adminPanel').classList.remove('hidden');
+renderOrders();
+}
+
+}
+
+function createOrder(service){
+
+if(!currentUser){
+alert('Đăng nhập trước');
+return;
+}
+
+let orders=JSON.parse(localStorage.getItem('orders'));
+
+orders.push({
+user:currentUser.username,
+service:service,
+status:'Đang xử lý'
+});
+
+localStorage.setItem('orders',JSON.stringify(orders));
+
+alert('Đã tạo đơn cày thuê');
+
+if(currentUser.role==='admin'){
+renderOrders();
+}
+
+}
+
+function renderOrders(){
+
+let orders=JSON.parse(localStorage.getItem('orders'));
+
+let html='';
+
+orders.forEach((o,i)=>{
+
+html+=`
+<div class="order">
+<h3>${o.user}</h3>
+<p>Dịch vụ: ${o.service}</p>
+<div class="status">${o.status}</div>
+<br>
+<select onchange="changeStatus(${i},this.value)">
+<option>Đang xử lý</option>
+<option>Đang cày</option>
+<option>Đã cày xong</option>
+</select>
+</div>
+`;
+
+});
+
+document.getElementById('orders').innerHTML=html;
+}
+
+function changeStatus(index,status){
+
+let orders=JSON.parse(localStorage.getItem('orders'));
+orders[index].status=status;
+localStorage.setItem('orders',JSON.stringify(orders));
+renderOrders();
+
+}
+
+</script>
+
+</body>
+  </html>
