@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meow Script Hub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at top,#ff00ff33,transparent 40%),
+    radial-gradient(circle at bottom,#00ffff22,transparent 40%),
+    #050505;
+    z-index:-2;
+}
+
+/* PARTICLES */
+
+.particle{
+    position:fixed;
+    width:4px;
+    height:4px;
+    background:white;
+    border-radius:50%;
+    opacity:0.3;
+    animation:float linear infinite;
+    z-index:-1;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-10vh);
+    }
+}
+
+/* NAVBAR */
+
+nav{
+    width:100%;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(10px);
+    z-index:999;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#ff00ff;
+    text-shadow:0 0 15px #ff00ff;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ff00ff;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:70px;
+    color:#ff00ff;
+    text-shadow:0 0 25px #ff00ff;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #ff00ff;
+    }
+    to{
+        text-shadow:0 0 30px #ff00ff;
+    }
+}
+
+.hero p{
+    margin-top:15px;
+    font-size:20px;
+    opacity:0.8;
+}
+
+.buttons{
+    margin-top:40px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.btn{
+    padding:15px 35px;
+    border-radius:15px;
+    text-decoration:none;
+    color:white;
+    background:#ff00ff;
+    box-shadow:0 0 20px #ff00ff;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+}
+
+/* FEATURES */
+
+.section-title{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:50px;
+    color:#00ffff;
+}
+
+.features{
+    padding:100px 8%;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:30px;
+    border-radius:25px;
+    backdrop-filter:blur(10px);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px #ff00ff55;
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#ff00ff;
+}
+
+/* DOWNLOAD */
+
+.download{
+    padding:100px 8%;
+    text-align:center;
+}
+
+.download-box{
+    max-width:700px;
+    margin:auto;
+    padding:40px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:40px;
+    opacity:0.6;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:45px;
+}
+
+nav{
+    flex-direction:column;
+    gap:15px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- PARTICLES -->
+
+<script>
+for(let i=0;i<80;i++){
+
+let p=document.createElement("div");
+p.className="particle";
+
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(5+Math.random()*10)+"s";
+p.style.opacity=Math.random();
+
+document.body.appendChild(p);
+
+}
+</script>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+MEOW HUB
+</div>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="#download">Download</a></li>
+<li><a href="#">Discord</a></li>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>MEOW SCRIPT HUB</h1>
+
+<p>
+Best Roblox Executor & Script Hub 😎
+</p>
+
+<div class="buttons">
+
+<a class="btn" href="#">
+DOWNLOAD
+</a>
+
+<a class="btn" href="#">
+DISCORD
+</a>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features" id="features">
+
+<h2 class="section-title">
+FEATURES
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>FAST EXECUTOR</h3>
+<p>
+Execute scripts smoothly with high speed.
+</p>
+</div>
+
+<div class="card">
+<h3>MOBILE SUPPORT</h3>
+<p>
+Works perfectly on Android devices.
+</p>
+</div>
+
+<div class="card">
+<h3>AUTO UPDATE</h3>
+<p>
+Always updated with latest Roblox patches.
+</p>
+</div>
+
+<div class="card">
+<h3>FREE SCRIPT HUB</h3>
+<p>
+Get premium scripts completely free.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- DOWNLOAD -->
+
+<section class="download" id="download">
+
+<h2 class="section-title">
+DOWNLOAD
+</h2>
+
+<div class="download-box">
+
+<h2>
+Download Meow Executor
+</h2>
+
+<br>
+
+<p>
+Safe • Fast • Powerful
+</p>
+
+<br><br>
+
+<a class="btn" href="#">
+DOWNLOAD NOW
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 Meow Hub - All Rights Reserved
+
+</footer>
+
+</body>
+  </html>
